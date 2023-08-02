@@ -1,6 +1,7 @@
 package main
 
 import (
+	"finance/m/v2/contract"
 	"finance/m/v2/domain"
 	"finance/m/v2/domain/month"
 	"finance/m/v2/services"
@@ -8,31 +9,39 @@ import (
 )
 
 func main() {
-	savings := 10000.0
-	fgts := 10000.0
-	cashback := 200.98
-	currentMonth := month.August
+	parameters, err := contract.LoadParameters()
+	if err != nil {
+		panic(err)
+	}
 
-	gains := domain.NewGains().
-		AddTaxableGain("salary", 14000.0).
-		AddNonTaxableGain("VR/VA", 1000.0)
+	currentMonth := parameters.Month
+
+	savings := parameters.Savings.Bank
+	cashback := parameters.Savings.Cashback
+	fgts := parameters.Savings.FGTS
+
+	gains := domain.NewGains()
+	for _, taxable := range parameters.Gains.Taxables {
+		gains.AddTaxableGain(taxable.Key, taxable.Value)
+	}
+
+	for _, nonTaxable := range parameters.Gains.NonTaxables {
+		gains.AddNonTaxableGain(nonTaxable.Key, nonTaxable.Value)
+	}
 
 	gains.Print()
 
-	spents := domain.NewSpents().
-		AddDebitValue("aluguel", 1550).
-		AddDebitValue("condominio", 0).
-		AddDebitValue("IPTU", 28.58).
-		AddDebitValue("internet", 39.95).
-		AddDebitValue("health", 1636).
-		AddDebitValue("energy", 125).
-		AddCreditValue("spotify", 34.9).
-		AddCreditValue("netflix", 55.9).
-		AddCreditValue("meli 6", 19.46).
-		AddCreditValue("tim beta", 60.0).
-		AddCreditValue("hbo max", 13.95).
-		AddCreditValue("remédios", 300).
-		AddRemainingCreditValueToReachTotal(3500)
+	spents := domain.NewSpents()
+
+	for _, debit := range parameters.Spents.Debits {
+		spents.AddDebitValue(debit.Key, debit.Value)
+	}
+
+	for _, credit := range parameters.Spents.Credits {
+		spents.AddCreditValue(credit.Key, credit.Value)
+	}
+
+	spents.AddRemainingCreditValueToReachTotal(parameters.Spents.CreditTotal)
 
 	spents.Print()
 
