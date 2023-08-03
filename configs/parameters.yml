@@ -1,23 +1,25 @@
+year_cdi_percent: 13.65
 month: August
+months_duration: 120
 
 savings:
   bank: 10000.0
   fgts: 10000.0
-  cashback: 200.0
+  cashback: 100.00
 
 gains:
   taxables:
     - { key: 'salary', value: 10000.0 }
   non_taxables:
-    - { key: 'vr/va', value: 1282.0 }
+    - { key: 'vr/va', value: 1000.0 }
 
 spents:
   debits:
-    - { key: 'aluguel', value: 1100.0 }
-    - { key: 'condominio', value: 0.0 }
+    - { key: 'aluguel', value: 1000.0 }
+    - { key: 'condominio', value: 100.0 }
     - { key: 'IPTU', value: 28.58 }
     - { key: 'internet', value: 39.95 }
-    - { key: 'healthy', value: 600.0 }
+    - { key: 'healthy', value: 1636 }
     - { key: 'energy', value: 125 }
   credits:
     - { key: 'spotify', value: 34.9 }
@@ -26,4 +28,4 @@ spents:
     - { key: 'tim beta', value: 60.0 }
     - { key: 'hbo max', value: 13.95 }
     - { key: 'remedios', value: 300 }
-  credit_total: 2900.0
+  credit_total: 3500.0

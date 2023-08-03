@@ -1,7 +1,7 @@
 package domain
 
 import (
-	"finance/m/v2/domain/payment"
+	"finance/m/v2/domain/consts/payment"
 	"fmt"
 )
 

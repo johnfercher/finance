@@ -2,7 +2,7 @@ package services
 
 import (
 	"finance/m/v2/domain"
-	"finance/m/v2/domain/month"
+	"finance/m/v2/domain/consts/month"
 )
 
 type fgtsAccountant struct {
@@ -15,7 +15,7 @@ func NewFgtsAccountant(gains *domain.Gains) domain.Accountant {
 	}
 }
 
-func (t *fgtsAccountant) Apply(startValue float64, monthString string) float64 {
+func (t *fgtsAccountant) Apply(startValue float64, monthString string) (float64, float64) {
 	currentValue := startValue
 
 	if monthString == month.December {
@@ -23,5 +23,6 @@ func (t *fgtsAccountant) Apply(startValue float64, monthString string) float64 {
 	}
 
 	currentValue = currentValue + t.gains.GetFGTS()
-	return currentValue
+
+	return currentValue, 0
 }

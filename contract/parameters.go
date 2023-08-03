@@ -14,8 +14,10 @@ type KeyValue struct {
 }
 
 type Parameters struct {
-	Month   string `yaml:"month"`
-	Savings struct {
+	YearCDIPercent float64 `yaml:"year_cdi_percent"`
+	Month          string  `yaml:"month"`
+	MonthsDuration int     `yaml:"months_duration"`
+	Savings        struct {
 		Bank     float64 `yaml:"bank"`
 		Cashback float64 `yaml:"cashback"`
 		FGTS     float64 `yaml:"fgts"`

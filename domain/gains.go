@@ -2,7 +2,7 @@ package domain
 
 import (
 	"finance/m/v2/domain/consts"
-	"finance/m/v2/domain/gain"
+	"finance/m/v2/domain/consts/gain"
 	"fmt"
 )
 
