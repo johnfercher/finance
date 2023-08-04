@@ -1,8 +1,8 @@
 package gain
 
-type GainType string
+type Type string
 
 const (
-	TaxableGainType    GainType = "Taxable"
-	NonTaxableGainType GainType = "NonTaxable"
+	Taxable    Type = "taxable"
+	NonTaxable Type = "nonTaxable"
 )

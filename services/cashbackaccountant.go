@@ -3,23 +3,25 @@ package services
 import (
 	"finance/m/v2/domain"
 	"finance/m/v2/domain/consts"
+	"finance/m/v2/domain/consts/month"
+	"finance/m/v2/domain/entities"
 )
 
 type cashbackAccountant struct {
-	spents *domain.Spents
+	spents *entities.Spents
 	cdi    float64
 }
 
-func NewCashbackAccontant(spents *domain.Spents, cdi float64) domain.Accountant {
+func NewCashbackAccontant(spents *entities.Spents, cdi float64) domain.Accountant {
 	return &cashbackAccountant{
 		spents: spents,
 		cdi:    cdi,
 	}
 }
 
-func (t *cashbackAccountant) Apply(startValue float64, _ string) (float64, float64) {
+func (t *cashbackAccountant) Apply(startValue float64, currentMonth month.Month) (float64, float64) {
 	currentValue := startValue
-	addedValue := currentValue + t.spents.GetTotalCreditCashback(consts.CashbackPercent)
+	addedValue := currentValue + t.spents.GetTotalCreditCashback(currentMonth, consts.CashbackPercent)
 	revenue := addedValue * (1 + t.cdi*2)
 
 	return revenue, revenue - addedValue

@@ -1,6 +1,7 @@
 package contract
 
 import (
+	"finance/m/v2/domain/consts/month"
 	"fmt"
 	"gopkg.in/yaml.v2"
 	"os"
@@ -8,28 +9,29 @@ import (
 
 const filePath = "configs/%s.yml"
 
-type KeyValue struct {
-	Key   string  `yaml:"key"`
-	Value float64 `yaml:"value"`
+type Transaction struct {
+	Label      string        `yaml:"label"`
+	Value      float64       `yaml:"value"`
+	Recurrence []month.Month `yaml:"recurrence"`
 }
 
 type Parameters struct {
-	YearCDIPercent float64 `yaml:"year_cdi_percent"`
-	Month          string  `yaml:"month"`
-	MonthsDuration int     `yaml:"months_duration"`
+	YearCDIPercent float64     `yaml:"year_cdi_percent"`
+	Month          month.Month `yaml:"month"`
+	MonthsDuration int         `yaml:"months_duration"`
 	Savings        struct {
 		Bank     float64 `yaml:"bank"`
 		Cashback float64 `yaml:"cashback"`
 		FGTS     float64 `yaml:"fgts"`
 	} `yaml:"savings"`
 	Gains struct {
-		Taxables    []KeyValue `yaml:"taxables"`
-		NonTaxables []KeyValue `yaml:"non_taxables"`
+		Taxables    []Transaction `yaml:"taxables"`
+		NonTaxables []Transaction `yaml:"non_taxables"`
 	} `yaml:"gains"`
 	Spents struct {
-		Debits      []KeyValue `yaml:"debits"`
-		Credits     []KeyValue `yaml:"credits"`
-		CreditTotal float64    `yaml:"credit_total"`
+		Debits      []Transaction `yaml:"debits"`
+		Credits     []Transaction `yaml:"credits"`
+		CreditTotal float64       `yaml:"credit_total"`
 	} `yaml:"spents"`
 }
 

@@ -1,7 +1,5 @@
 package consts
 
-type Month string
-
 const (
 	Year             = 12
 	SalaryTaxPercent = 0.275

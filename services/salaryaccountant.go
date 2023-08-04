@@ -18,14 +18,10 @@ func NewSalaryAccountant(balance *domain.Balance, cdi float64) domain.Accountant
 	}
 }
 
-func (t *salaryAccountant) Apply(startValue float64, monthString string) (float64, float64) {
+func (t *salaryAccountant) Apply(startValue float64, currentMonth month.Month) (float64, float64) {
 	currentValue := startValue
 
-	if monthString == month.December {
-		currentValue += t.balance.Gains.GetTotalLiquid()
-	}
-
-	addedValue := (currentValue + t.balance.Get())
+	addedValue := currentValue + t.balance.Get(currentMonth)
 	revenueValue := addedValue * (1 + t.cdi)
 
 	return revenueValue, revenueValue - addedValue

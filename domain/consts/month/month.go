@@ -1,21 +1,24 @@
 package month
 
+type Month string
+type Recurrence map[Month]bool
+
 const (
-	January   string = "January"
-	February  string = "February"
-	March     string = "March"
-	April     string = "April"
-	May       string = "May"
-	June      string = "June"
-	July      string = "July"
-	August    string = "August"
-	September string = "September"
-	October   string = "October"
-	November  string = "November"
-	December  string = "December"
+	January   Month = "January"
+	February  Month = "February"
+	March     Month = "March"
+	April     Month = "April"
+	May       Month = "May"
+	June      Month = "June"
+	July      Month = "July"
+	August    Month = "August"
+	September Month = "September"
+	October   Month = "October"
+	November  Month = "November"
+	December  Month = "December"
 )
 
-var monthNumber = map[string]int{
+var monthNumber = map[Month]int{
 	January:   1,
 	February:  2,
 	March:     3,
@@ -30,7 +33,7 @@ var monthNumber = map[string]int{
 	December:  12,
 }
 
-var numberMonth = map[int]string{
+var numberMonth = map[int]Month{
 	1:  January,
 	2:  February,
 	3:  March,
@@ -45,15 +48,7 @@ var numberMonth = map[int]string{
 	12: December,
 }
 
-func GetMonthString(num int) string {
-	return numberMonth[num]
-}
-
-func GetMonthNumber(month string) int {
-	return monthNumber[month]
-}
-
-func GetNextMonth(month string) string {
+func GetNextMonth(month Month) Month {
 	number := monthNumber[month]
 	if number == 12 {
 		number = 1
@@ -62,4 +57,30 @@ func GetNextMonth(month string) string {
 	}
 
 	return numberMonth[number]
+}
+
+func BuildRecurrence(arr []Month) map[Month]bool {
+	recurrence := make(map[Month]bool)
+	for _, value := range arr {
+		recurrence[value] = true
+	}
+
+	return recurrence
+}
+
+func GetAnnualRecurrence() []Month {
+	return []Month{
+		January,
+		February,
+		March,
+		April,
+		May,
+		June,
+		July,
+		August,
+		September,
+		October,
+		November,
+		December,
+	}
 }

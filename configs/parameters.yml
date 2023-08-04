@@ -1,6 +1,6 @@
 year_cdi_percent: 13.65
 month: August
-months_duration: 120
+months_duration: 36
 
 savings:
   bank: 10000.0
@@ -9,23 +9,25 @@ savings:
 
 gains:
   taxables:
-    - { key: 'salary', value: 10000.0 }
+    - { label: 'salary', value: 10000.0, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: '13 salary', value: 5000.0, recurrence: ['March', 'December'] }
   non_taxables:
-    - { key: 'vr/va', value: 1000.0 }
+    - { label: 'vr/va', value: 1000.0, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
 
 spents:
   debits:
-    - { key: 'aluguel', value: 1000.0 }
-    - { key: 'condominio', value: 100.0 }
-    - { key: 'IPTU', value: 28.58 }
-    - { key: 'internet', value: 39.95 }
-    - { key: 'healthy', value: 1636 }
-    - { key: 'energy', value: 125 }
+    - { label: 'aluguel', value: 1000.0, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'condominio', value: 100.0, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'IPTU', value: 150.0, recurrence: ['February']  }
+    - { label: 'internet', value: 39.95, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'healthy', value: 1636, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
+    - { label: 'energy', value: 125, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
   credits:
-    - { key: 'spotify', value: 34.9 }
-    - { key: 'netflix', value: 55.9 }
-    - { key: 'meli 6', value: 19.46 }
-    - { key: 'tim beta', value: 60.0 }
-    - { key: 'hbo max', value: 13.95 }
-    - { key: 'remedios', value: 300 }
+    - { label: 'spotify', value: 34.9, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'netflix', value: 55.9, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'meli 6', value: 19.46, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'tim beta', value: 60.0, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'hbo max', value: 13.95, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'remedios', value: 300, recurrence: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'] }
+    - { label: 'Goland', value: 288.0, recurrence: ['October']  }
   credit_total: 3500.0
